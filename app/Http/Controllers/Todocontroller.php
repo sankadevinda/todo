@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 
-class Todocontroller extends Controller
+class Todocontroller extends PearentController
 {
 
     protected $task;
@@ -16,7 +16,7 @@ class Todocontroller extends Controller
     }
 
     public function index(){
-        $response['tasks']=$this->task->all();
+        $response['tasks']=Todo::all();
         return view('pages.Todo.index')->with($response);
     }
 

@@ -28,9 +28,20 @@ Route::prefix('/todo')->group(function(){
 
 Route::get('/' , [Todocontroller::class , 'index'])->name('todo');
 Route::post('/store', [Todocontroller::class , 'store'])->name('todo.store');
-Route::get('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
+Route::delete('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
 Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.done');
 });
 
 
 
+//jestream authentication
+
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });

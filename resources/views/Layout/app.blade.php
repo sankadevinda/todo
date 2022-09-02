@@ -10,7 +10,7 @@
 </head>
 <body>
     @include('Components.nav')
-    
+
     @yield('content')
 
     @include('Library.script')
