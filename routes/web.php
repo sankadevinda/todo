@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\Homecontroll;
 use App\Http\Controllers\Todocontroller;
 use Illuminate\Support\Facades\Route;
@@ -32,16 +33,24 @@ Route::get('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo
 Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.done');
 });
 
+Route::prefix('/banner')->group(function(){
+
+    Route::get('/' , [BannerController::class , 'index'])->name('banner');
+    Route::post('/store', [BannerController::class , 'store'])->name('banner.store');
+    Route::get('/{task_id}/delete' , [BannerController::class , 'delete'])->name('banner.delete');
+    Route::get('/{task_id}/status' , [BannerController::class , 'status'])->name('banner.status');
+    });
+
 
 
 //jestream authentication
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
