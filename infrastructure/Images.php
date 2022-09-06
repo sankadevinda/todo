@@ -1,14 +1,11 @@
 <?php
-
-
 namespace Infrastructure;
 
 use App\Models\Image;
 use App\User;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\File;
-use infrastructure\Facade\FileFacade as FacadeFileFacade;
-use infrastructure\Facades\FileFacade;
+use infrastructure\Facade\FileFacade;
 use Intervention\Image\ImageManager;
 
 class Images

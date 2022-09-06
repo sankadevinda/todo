@@ -11,20 +11,24 @@
         </div>
     </div>
     <div class="col-lg-12">
-     <form action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data" >
+     <form role="form" action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data" >
             @csrf
         <div class="row">
             <div class="col-lg-8">
-                <input class="form-control form-control-lg" type="text" name="title" placeholder="Enter Your Text" aria-label="default input example">
+                <div>
+                    <input class="form-control form-control-lg" type="text" name="title" placeholder="Enter Your Text" aria-label="default input example">
+                </div>
+
+                <div class="col-lg-8 mt-5">
+                    <input class="form-control form-control-lg" type="file" name="images"   accept="image/jpg ,image/png , image/jpeg">
+                </div>
             </div>
 
             <div class="col-lg-4">
                 <button type="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
-        <div class="col-lg-8 mt-5">
-            <input class="form-control form-control-lg" type="file" name="name"   accept="image/jpg ,image/png , image/jpeg">
-        </div>
+
      </form>
     </div>
 <br><br>
@@ -34,29 +38,39 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Task</th>
+                        <th scope="col">banner</th>
+                        <th scope="col">image</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @foreach ($tasks as $key=>$task)
+                        @foreach ($banners as $key=>$banner)
                             <tr>
                                 <th scope="row">{{ ++$key }}</th>
-                                <td>{{ $task->title }}</td>
+                                <td>{{ $banner->title }}</td>
+                                <td>
+                                    <img src="{{ config('images.access_path') }}/{{ $banner->images->name }}" alt="" width="100px">
+                                </td>
 
                                 <td>
-                                    @if ($task->done == 0)
-                                        <span class="badge bg-danger">Not Completed</span>
+                                    @if ($banner->status == 0)
+                                        <span class="badge bg-danger">Draft</span>
 
                                     @else
-                                        <span class="badge bg-success ">Completed</span>
+                                        <span class="badge bg-success ">Publish</span>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('banner.delete' , $task->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
-                                    <a href="{{ route('banner.status' , $task->id) }}" class="btn btn-success"><i class="fa-solid fa-check"></i></a>
+                                    <a href="{{ route('banner.delete' , $banner->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    @if ($banner->status == 0)
+                                        <a href="{{ route('banner.status' , $banner->id) }}" class="btn btn-success">Publish<i class="fa-solid fa-check"></i></a>
+                                    @else
+                                        <a href="{{ route('banner.status' , $banner->id) }}" class="btn btn-warning">Draft<i class="fa-solid fa-check"></i></a>
+                                    @endif
+
                                 </td>
+
                             </tr>
                         @endforeach
 

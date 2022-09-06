@@ -2,14 +2,14 @@
 
 namespace domain\Facade;
 
-use domain\Services\Todoservice;
+use domain\Services\TodoService;
 use Illuminate\Support\Facades\Facade;
 
 class TodoFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return Todoservice::class;
+        return TodoService::class;
     }
 }
 
