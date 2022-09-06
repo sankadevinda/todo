@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class BannerController extends PearentController
 {
     public function index(){
-        $response['tasks']=BannerFacade::all();
-        return view('pages.Banner.index')->with($response);
+        $response['banners']=BannerFacade::all();
+        return view('pages.banner.index')->with($response);
     }
 
     public function store(Request $request){
@@ -18,15 +18,15 @@ class BannerController extends PearentController
         return redirect()->back();
     }
 
-    public function delete($task_id){
+    public function delete($banner_id){
 
-        BannerFacade::delete($task_id);
+        BannerFacade::delete($banner_id);
         return redirect()->back();
     }
 //single value update
-    public function done($task_id){
+    public function status($banner_id){
 
-        BannerFacade::done($task_id);
+        BannerFacade::status($banner_id);
         return redirect()->back();
     }
 }

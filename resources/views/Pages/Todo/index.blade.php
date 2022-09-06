@@ -30,7 +30,7 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Task</th>
+                        <th scope="col">task</th>
                         <th scope="col">Status</th>
                         <th scope="col">Actions</th>
                       </tr>
