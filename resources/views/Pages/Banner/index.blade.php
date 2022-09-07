@@ -1,8 +1,10 @@
 @extends('layout.app')
 
 @section('content')
+{{-- background-image:
+url("startransparent.gif"), --}}
 
-<div class="container">
+<div class="container ">
     <div class="row">
         <div class="con-lg-12 text-center">
             <h1 class="page-title">
@@ -10,17 +12,17 @@
             </h1>
         </div>
     </div>
-    <div class="col-lg-12">
-     <form role="form" action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data" >
+    <div class="col-lg-12 ">
+     <form  role="form" action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data" >
             @csrf
         <div class="row">
             <div class="col-lg-8">
-                <div>
+                <div class="form-group">
                     <input class="form-control form-control-lg" type="text" name="title" placeholder="Enter Your Text" aria-label="default input example">
                 </div>
 
-                <div class="col-lg-8 mt-5">
-                    <input class="form-control form-control-lg" type="file" name="images"   accept="image/jpg ,image/png , image/jpeg">
+                <div class="form-group mt-5">
+                    <input class="form-control dropify" type="file" name="images"   accept="image/jpg ,image/png , image/jpeg">
                 </div>
             </div>
 
@@ -90,5 +92,49 @@
         font-family: -webkit-body;
         font-size: 5rem;
     }
+    .dropify-massege p{
+        font-size: 2rem;
+    }
+
+    .dropify-render img{
+        margin: right;
+    }
+    p {
+    color: rgb(127, 125, 125);
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* .dropify-wrapper {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    padding: 5px 10px;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial";
+    font-size: 14px;
+    line-height: 22px;
+    color: #777;
+    background-color: #FFF;
+    background-image: none;
+    text-align: center;
+    border: 2px solid #77abdf;
+    -webkit-transition: border-color 0.15s linear;
+    transition: border-color 0.15s linear;
+} */
+
+
 </style>
+@endpush
+
+
+@push('js')
+<script>
+    $('.dropify').dropify();
+</script>
+
 @endpush
