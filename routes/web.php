@@ -29,6 +29,8 @@ Route::prefix('/todo')->group(function(){
 
 Route::get('/' , [Todocontroller::class , 'index'])->name('todo');
 Route::post('/store', [Todocontroller::class , 'store'])->name('todo.store');
+Route::get('/edit' , [Todocontroller::class , 'edit'])->name('todo.edit');
+Route::post('/{task_id}/update' , [Todocontroller::class , 'update'])->name('todo.update');
 Route::get('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
 Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.done');
 });

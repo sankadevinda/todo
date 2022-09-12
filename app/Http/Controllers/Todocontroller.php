@@ -34,8 +34,21 @@ class Todocontroller extends PearentController
     }
 //single value update
     public function done($task_id){
-        
+
         TodoFacade::done($task_id);
+        return redirect()->back();
+    }
+
+    public function edit(Request $request){
+     
+
+        $response['task']=TodoFacade::get($request->task_id);
+        return view('pages.Todo.edit')->with($response);
+
+    }
+
+    public function update(Request $request , $task_id){
+        TodoFacade::update($request->all() , $task_id);
         return redirect()->back();
     }
 }
