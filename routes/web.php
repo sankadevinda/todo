@@ -29,8 +29,17 @@ Route::prefix('/todo')->group(function(){
 
 Route::get('/' , [Todocontroller::class , 'index'])->name('todo');
 Route::post('/store', [Todocontroller::class , 'store'])->name('todo.store');
+Route::get('/edit' , [Todocontroller::class , 'edit'])->name('todo.edit');
+Route::post('/{task_id}/update' , [Todocontroller::class , 'update'])->name('todo.update');
 Route::get('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
 Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.done');
+
+
+//subtask routes
+
+Route::get('/{task_id}/sub' , [Todocontroller::class , 'subtask'])->name('todo.sub');
+Route::get('/sub/store' , [Todocontroller::class , 'sub_store'])->name('todo.sub.store');
+
 });
 
 Route::prefix('/banner')->group(function(){

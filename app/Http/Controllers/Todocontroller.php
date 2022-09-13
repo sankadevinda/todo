@@ -6,7 +6,7 @@ use App\Models\Todo;
 use domain\Facade\TodoFacade;
 use Illuminate\Http\Request;
 
-class Todocontroller extends PearentController
+class Todocontroller extends Controller
 {
 
     //  protected $task;
@@ -22,7 +22,7 @@ class Todocontroller extends PearentController
     }
 
     public function store(Request $request){
-        // dd($request);
+        //dd($request);
         TodoFacade::store($request->all());
         return redirect()->back();
     }
@@ -34,8 +34,47 @@ class Todocontroller extends PearentController
     }
 //single value update
     public function done($task_id){
-        
+
         TodoFacade::done($task_id);
         return redirect()->back();
     }
+
+    public function edit(Request $request){
+
+
+        $response['task']=TodoFacade::get($request->task_id);
+        return view('pages.Todo.edit')->with($response);
+
+    }
+
+    public function update(Request $request , $task_id){
+        TodoFacade::update($request->all() , $task_id);
+        return redirect()->back();
+    }
+
+
+
+//sub task
+
+
+    public function subtask($task_id){
+
+
+        $response['sub']=TodoFacade::get_sub_task($task_id);
+        return view('pages.Todo.subtask')->with($response);
+
+    }
+
+
+
+
+    public function sub_store(Request $request){
+         //dd($request);
+        TodoFacade::sub_store($request->all());
+        return redirect()->back('pages.Todo.subtask');
+    }
+
+
+
+
 }
