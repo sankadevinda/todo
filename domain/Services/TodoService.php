@@ -2,6 +2,7 @@
 
 namespace domain\Services;
 
+use App\Models\subtask;
 use App\Models\Todo;
 use GuzzleHttp\Psr7\Request;
 
@@ -15,7 +16,10 @@ class TodoService
     public function __construct()
     {
         $this->task = new Todo();
+        $this->sub =  new subtask();
     }
+
+
 //retriew todo recodes to index page
     public function all(){
         return $this->task::all();
@@ -25,6 +29,7 @@ class TodoService
     public function store($data){
         // dd($request);
         $this->task->create($data);
+
 
     }
 //delete todo recode of relevent id
@@ -45,6 +50,7 @@ class TodoService
     public function get( $task_id){
         return $this->task->find($task_id);
 
+
     }
 
     //new data update to db
@@ -56,6 +62,25 @@ class TodoService
     //new data and past data merge
     protected function edit(Todo $task , $data){
         return array_merge($task->toArray(),$data);
+    }
+
+
+
+//sub task
+
+    public function sub_store($data){
+
+
+        $this->sub->create($data);
+
+    }
+
+
+    public function get_sub_task($data){
+
+
+
+
     }
 }
 
