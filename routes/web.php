@@ -38,7 +38,7 @@ Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.don
 //subtask routes
 
 Route::get('/{task_id}/sub' , [Todocontroller::class , 'subtask'])->name('todo.sub');
-Route::get('/sub/store' , [Todocontroller::class , 'sub_store'])->name('todo.sub.store');
+Route::post('/sub/store' , [Todocontroller::class , 'sub_store'])->name('todo.sub.store');
 
 });
 

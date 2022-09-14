@@ -14,6 +14,13 @@ class subtask extends Model
         'phone',
         'priority',
         'note',
+        'date',
         'task_id',
     ];
+
+
+
+    // public function get_sub($task_id){
+    //     return $this->where('task_id' , '$task_id')->get();
+    // }
 }
