@@ -11,7 +11,7 @@
         </div>
         <div class="con-lg-12 text-center">
             <h2 class="page-titles">
-               {{-- {{ $task->title }} --}}
+               {{ $task->title }}
             </h2>
         </div>
     </div>
@@ -28,16 +28,16 @@
                     @csrf
                 <div class="row pt-4">
                     <div class="col-lg-6 ">
-                        <input class="form-control form-control-lg" type="text" name="sub_title" placeholder="Enter Your substitle" aria-label="default input example">
+                        <input class="form-control form-control-lg" type="text" name="sub_title" placeholder="Enter Your substitle" aria-label="default input example" required>
                     </div>
                     <div class="col-lg-6">
-                        <input class="form-control form-control-lg" type="number" name="phone" placeholder="Enter Your Text" aria-label="default input example">
+                        <input class="form-control form-control-lg" type="number" name="phone" placeholder="Enter Your Text" aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row pt-5">
                     <div class="col-lg-6 ">
                         <div class="from-group">
-                            <select class="form-select" name="priority" id="priority" aria-label="Default select example">
+                            <select class="form-select" name="priority" id="priority" aria-label="Default select example" required>
                                 <option selected>Open this select menu</option>
                                 <option value="1">One</option>
                                 <option value="2">Two</option>
@@ -46,12 +46,12 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <input class="form-control form-control-lg" type="date" name="date" placeholder="Enter Your date" aria-label="default input example">
+                        <input class="form-control form-control-lg" type="date" name="date" placeholder="Enter Your date" aria-label="default input example" required>
                     </div>
                 </div>
                 <div class="row text-center pt-5">
                     <div class="col align-self-center pt-4">
-                        <textarea name="note" id="note" cols="80" rows="5" placeholder="Enter Your Note"></textarea>
+                        <textarea name="note" id="note" cols="80" rows="5" placeholder="Enter Your Note" required></textarea>
                       </div>
 
                 </div>
