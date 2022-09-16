@@ -1,7 +1,5 @@
 @extends('layout.app')
-
 @section('content')
-
 <div class="container">
     <div class="row pt-3">
         <div class="con-lg-12 text-center">
@@ -15,7 +13,6 @@
             </h2>
         </div>
     </div>
-
     <div class="col-lg-12 pt-4">
         <div class="card shadow-lg p-3 mb-5 bg-body rounded ">
             <div class="card-header text-center text-bold bg-warning ">
@@ -28,10 +25,11 @@
                     @csrf
                 <div class="row pt-4">
                     <div class="col-lg-6 ">
-                        <input class="form-control form-control-lg" type="text" name="sub_title" placeholder="Enter Your substitle" aria-label="default input example" required>
+                        <input class="form-control form-control-lg" type="text" name="sub_title" placeholder="Enter Your substitle" aria-label="default input example" required maxlength="20">
                     </div>
                     <div class="col-lg-6">
-                        <input class="form-control form-control-lg" type="number" name="phone" placeholder="Enter Your Text" aria-label="default input example" required>
+                        <input class="form-control form-control-lg" type="number" name="phone" placeholder="Enter Your Text" aria-label="default input example" required maxlength="10"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); ">
                     </div>
                 </div>
                 <div class="row pt-5">
@@ -53,7 +51,6 @@
                     <div class="col align-self-center pt-4">
                         <textarea name="note" id="note" cols="80" rows="5" placeholder="Enter Your Note" required></textarea>
                       </div>
-
                 </div>
                 <div class="raw text-center mt-4">
                     <input type="hidden" name="task_id" value="{{ $task->id }}">
@@ -94,7 +91,6 @@
     </div>
 </div>
 @endsection
-
 @push('css')
 <style>
     .page-title{
