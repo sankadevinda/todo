@@ -12,6 +12,7 @@ class TodoService
 
 //ipmlemeted constructor
     protected $task;
+    protected $sub;
 
     public function __construct()
     {
@@ -69,18 +70,12 @@ class TodoService
 //sub task
 
     public function sub_store($data){
-
-
         $this->sub->create($data);
-
     }
 
 
-    public function get_sub_task($data){
-
-
-
-
+    public function get_sub(){
+        return $this->sub::all();
     }
 }
 

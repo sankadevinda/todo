@@ -9,11 +9,12 @@
     @include('Library.style')
 </head>
 <body>
+    @include('Components.header')
     @include('Components.nav')
-
     @yield('content')
-
+    @include('Components.footer')
     @include('Library.script')
+
 </body>
 </html>
 

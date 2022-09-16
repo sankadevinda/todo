@@ -56,23 +56,21 @@ class Todocontroller extends Controller
 
 //sub task
 
+public function sub_store(Request $request){
+    //dd($request);
+   TodoFacade::sub_store($request->all());
+   return redirect()->back();
+}
 
     public function subtask($task_id){
-
-
-        $response['sub']=TodoFacade::get_sub_task($task_id);
+        $response['task']=TodoFacade::get($task_id);
+        $response['sub_tasks']=TodoFacade::get_sub($task_id);
+        //dd($response);
         return view('pages.Todo.subtask')->with($response);
 
     }
 
 
-
-
-    public function sub_store(Request $request){
-         //dd($request);
-        TodoFacade::sub_store($request->all());
-        return redirect()->back('pages.Todo.subtask');
-    }
 
 
 
