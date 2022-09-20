@@ -14,7 +14,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link disabled">Disabled</a>
+            <a class="nav-link" href="{{ route('relationship') }}">Relationship</a>
           </li>
         </ul>
         <form method="POST" action="{{ route('logout') }}" x-data>
