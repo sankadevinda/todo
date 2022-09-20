@@ -23,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/' , [Homecontroll::class , 'index'])->name('home');
 
+Route::get('/relationship' , [Homecontroll::class , 'relationship'])->name('relationship');
+
 
 
 Route::prefix('/todo')->group(function(){
