@@ -16,6 +16,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('relationship') }}">Relationship</a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('category') }}">category</a>
+          </li>
         </ul>
         <form method="POST" action="{{ route('logout') }}" x-data>
             @csrf

@@ -25,6 +25,9 @@ Route::get('/' , [Homecontroll::class , 'index'])->name('home');
 
 Route::get('/relationship' , [Homecontroll::class , 'relationship'])->name('relationship');
 
+Route::get('/category' , [Homecontroll::class , 'category'])->name('category');
+Route::get('/{category_id}/categoryproductlist' , [Homecontroll::class , 'categoryproductlist'])->name('categoryproductlist');
+
 
 
 Route::prefix('/todo')->group(function(){
@@ -33,8 +36,9 @@ Route::get('/' , [Todocontroller::class , 'index'])->name('todo');
 Route::post('/store', [Todocontroller::class , 'store'])->name('todo.store');
 Route::get('/edit' , [Todocontroller::class , 'edit'])->name('todo.edit');
 Route::post('/{task_id}/update' , [Todocontroller::class , 'update'])->name('todo.update');
-Route::get('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
+Route::delete('/{task_id}/delete' , [Todocontroller::class , 'delete'])->name('todo.delete');
 Route::get('/{task_id}/done' , [Todocontroller::class , 'done'])->name('todo.done');
+Route::post('/search_task', [Todocontroller::class , 'search_task'])->name('todo.search');
 
 
 //subtask routes

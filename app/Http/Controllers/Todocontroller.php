@@ -30,6 +30,7 @@ class Todocontroller extends Controller
     public function delete($task_id){
 
         TodoFacade::delete($task_id);
+
         return redirect()->back();
     }
 //single value update
@@ -70,7 +71,11 @@ public function sub_store(Request $request){
 
     }
 
-
+public function search(Request $request){
+    $tasks = Todo::where('title', 'like' , '%'.$request->search_string.'%')
+    ->orderby('id')
+    ->paginate(5);
+}
 
 
 

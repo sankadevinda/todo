@@ -37,7 +37,7 @@
                         <div class="from-group">
                             <select class="form-select" name="priority" id="priority" aria-label="Default select example" required>
                                 <option selected>Open this select menu</option>
-                                <option value="1">One</option>
+                                <option value="5">One</option>
                                 <option value="2">Two</option>
                                 <option value="3">Three</option>
                               </select>
