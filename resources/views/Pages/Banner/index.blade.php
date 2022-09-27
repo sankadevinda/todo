@@ -22,7 +22,7 @@ url("startransparent.gif"), --}}
                 </div>
 
                 <div class="form-group mt-5">
-                    <input class="form-control dropify" type="file" name="images"   accept="image/jpg ,image/png , image/jpeg">
+                    <input class="form-control dropify" type="file" name="images"   accept="image/jpg ,image/png , image/jpeg file/pdf">
                 </div>
             </div>
 

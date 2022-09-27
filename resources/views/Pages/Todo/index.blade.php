@@ -23,6 +23,13 @@
         </div>
      </form>
     </div>
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-12">
+                <input class="mb-3 form-control" type="text" name="search" placeholder="Search Here" >
+            </div>
+        </div>
+    </div>
 <br><br>
     <div class="row">
         <div class="col-lg-12 " >
@@ -38,7 +45,9 @@
                     <tbody class="table-group-divider">
                         @foreach ($tasks as $key=>$task)
                             <tr>
+                                {{-- <input type="hidden" class="serdelete_val_id" value="{{ $task->id }}"> --}}
                                 <th scope="row">{{ ++$key }}</th>
+
                                 <td>{{ $task->title }}</td>
 
                                 <td>
@@ -50,7 +59,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ route('todo.delete' , $task->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+                                    <form method="POST" action="{{ route('todo.delete', $task->id) }}">
+                                        @csrf
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button type="submit" class="btn btn-xs btn-danger btn-flat show_confirm" data-toggle="tooltip" title='Delete'>Delete</button>
+                                    </form>
+                                    {{-- <a href="{{ route('todo.delete' , $task->id) }}" class="btn btn-danger"><i class="far fa-trash-alt"></i></a> --}}
+                                 {{-- <button type="button" class="btn btn-danger servideletebtn"></button> --}}
+
                                     <a href="{{ route('todo.done' , $task->id) }}" class="btn btn-success"><i class="fa-solid fa-check"></i></a>
                                     <a href="javascript:void(0);"  class="btn btn-primary"><i class="fa-solid fa-pencil" onclick="taskEditModal({{ $task->id }})"></i></a>
                                     <a href="{{ route('todo.sub' , $task->id) }} "  class="btn btn-success"><i class="fa-solid fa-check"></i></a>
@@ -95,8 +111,9 @@
 @endpush
 
 @push('js')
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
+    //edit modal
     function taskEditModal(task_id){
         var data = {
             task_id: task_id,
@@ -117,5 +134,73 @@
             }
          });
     }
+
+
+    $('.show_confirm').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Are you sure you want to delete this record?`,
+              text: "If you delete this, it will be gone forever.",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
+    // $(document).ready(function (){
+    //     $.ajaxSetup({
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         }
+    //     });
+
+    //     $('.servideletebtn').click(function (e) {
+    //         e.preventDefault();
+
+    //         var delete_id = $(this).closest("tr").find('.serdelete_val_id').val();
+    //         // alert(delete_id);
+
+
+    //         swal({
+    //             title: "Are you sure?",
+    //             text: "Once deleted, you will not be able to recover this imaginary file!",
+    //             icon: "warning",
+    //             buttons: true,
+    //             dangerMode: true,
+    //         })
+    //         .then((willDelete) => {
+    //             if (willDelete) {
+
+    //                 var data={
+    //                     "token": $('input[name=_token]').val(),
+    //                     "id": delete_id
+    //                 };
+
+    //                 $.ajax({
+    //                     type: "GET",
+    //                     url: "/{task_id}/delete"+delete_id,
+    //                     data: "data",
+    //                     success: function (response) {
+    //                         swal(response.status, {
+    //                             icon: "success",
+    //                         })
+    //                         .then((result) =>{
+    //                             location.reload();
+    //                         });
+    //                     }
+    //                 });
+    //             }
+    //         });
+    //     });
+    // });
+
+
 </script>
 @endpush

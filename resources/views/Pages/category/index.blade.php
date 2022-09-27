@@ -6,24 +6,18 @@
     <div class="row">
         <div class="con-lg-12 text-center">
             <h1 class="page-title">
-                Relation page
+                Category page
             </h1>
         </div>
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4">
-        @foreach ($product as $products)
+        @foreach ($category as $categorys)
             <div class="col">
                 <div class="card text-white bg-dark  border-warning mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $products->name }}</h5>
-                        <p class="card-text">{{ $products->intro }}.</p>
-                        <div class="card text-white bg-success border-white mb-3">
-                            @foreach ($products->categories as $category)
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $products->name }}</h5>
-                            </div>
-                            @endforeach
-                        </div>
+                        <h5 class="card-title">{{ $categorys->name }}</h5>
+                       <h4></h4>
+                        <a href="{{ route('categoryproductlist', $categorys->id) }}"><button btn-sucsess>Veiw More...</button></a>
                     </div>
                 </div>
             </div>
@@ -37,7 +31,7 @@
 <style>
     .page-title{
         padding: 10vh;
-        color: #786507;
+        color: #904d05c4;
         font-family: -webkit-body;
         font-size: 5rem;
     }

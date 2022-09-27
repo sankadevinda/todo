@@ -11,8 +11,16 @@ class product extends Model
 
     protected $fillable = [
         'name',
+
         'intro',
-        'category_id',
 
     ];
+
+    // public function category(){
+    //     return $this->hasOne(catergory::class, 'id','category_id');
+    // }
+
+    public function categories(){
+        return $this->belongsToMany(catergory::class , product_catergory::class ,'product_id' , 'category_id');
+    }
 }

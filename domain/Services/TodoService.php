@@ -37,6 +37,7 @@ class TodoService
     public function delete($task_id){
         $task = $this->task->find($task_id);
         $task->delete();
+        // return response()->json(['status'=>'Todo task delete succsessfully']);
 
     }
 //single value update
